@@ -21,7 +21,7 @@ public class logout extends HttpServlet {
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 request.getSession().invalidate();
-	        response.sendRedirect(request.getContextPath() + "/login.html");
+	        response.sendRedirect(request.getContextPath() + "/index.html");
 	}
 
 }

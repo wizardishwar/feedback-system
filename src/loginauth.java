@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class loginauth
@@ -52,7 +53,12 @@ public class loginauth extends HttpServlet {
 			
 
 			if (status) {
-				out.println("welcome !");
+				//out.println("welcome !");
+				HttpSession session = request.getSession();
+	            session.setAttribute("rollno", rollno);
+	            response.sendRedirect(request.getContextPath() + "/studenthome.jsp");
+				
+				
 			}
 
 			else {

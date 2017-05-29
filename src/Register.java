@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +42,7 @@ public class Register extends HttpServlet {
 		Connection con1;
 		con1 = connection.getconnection();
 		PrintWriter out = response.getWriter();
-		out.println(name+" "+roll+""+email+" "+password+ " "+year+" "+branch);
+		//out.println(name+" "+roll+""+email+" "+password+ " "+year+" "+branch);
 		try {
 			String sql = "insert into student values(?,?,?,?,?,?);";
 			out.println(sql);
@@ -56,8 +55,9 @@ public class Register extends HttpServlet {
 	            ps.setString(6,password);
 	            
 			ps.executeUpdate();
-            out.println("<h1>done!!!!!!!!</h1>");
-			
+          //  out.println("<h1>done!!!!!!!!</h1>");
+            con1.close();
+			response.sendRedirect("index.html");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
